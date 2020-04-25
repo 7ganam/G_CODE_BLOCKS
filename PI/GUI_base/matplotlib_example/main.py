@@ -1,6 +1,7 @@
 # ------------------------------------------------- ----- 
 # ---------------------- main.py ------------------- ---- 
 # --------------------------------------------- --------- 
+import os
 from  PyQt5.QtWidgets  import * 
 from  PyQt5.uic  import  loadUi 
 
@@ -14,7 +15,8 @@ class  MatplotlibWidget ( QMainWindow ):
     def  __init__ ( self ) :
         
         QMainWindow . __init__ ( self ) 
-        loadUi ( "/home/ghannam/Desktop/matlibplot_with_pyqt/qt_designer.ui" , self ) #load the ui we designed in qtdesigne to start modifing it's functionality
+        #load the ui we designed in qtdesigne to start modifing it's functionality
+        loadUi ( os.path.dirname(os.path.realpath(__file__))+"/"+"/qt_designer.ui" , self ) 
         self . setWindowTitle ( "PyQt5 & Matplotlib Example GUI" )  
         self . pushButton1 . clicked . connect ( self . update_graph ) 
 
