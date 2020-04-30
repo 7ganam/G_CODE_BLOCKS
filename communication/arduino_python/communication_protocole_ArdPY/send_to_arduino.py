@@ -24,7 +24,11 @@ def update_recieved_variables(ser):
     global recieved_var1
     global recieved_var2
     global recieved_var3
-
+    # print(ser.in_waiting)
+    #important note -----------------------------------------
+        #the rate of data sent from arduino should be less than the speed of emptying the puffer..to make sure print
+        #ser.in_waiting and observe if the puffer is getting filled increasingly..if so decrease the read speed from arduino
+    #-------------------------------------------------------
     if(ser.in_waiting > 0):
         try:
             input_string = ser.readline().decode("ASCII")
