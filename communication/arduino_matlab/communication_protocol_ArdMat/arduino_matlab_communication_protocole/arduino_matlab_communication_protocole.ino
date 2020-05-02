@@ -1,5 +1,4 @@
 //communication variables ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-
 int RECIEVE_TAG=222;
 float RECIVE_VAR1=0;
 float RECIVE_VAR2=0;
@@ -26,9 +25,12 @@ void loop()
       SEND_VAR1=RECIVE_VAR1;
       SEND_VAR2=RECIVE_VAR2;
       SEND_VAR3=RECIVE_VAR3;
+      
       send_send_variables();
 
 }
+
+
 
 // communication functions 
 void update_recieve_variables()

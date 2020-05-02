@@ -20,25 +20,13 @@ recieve_variable2_Array=[]
 recieve_variable3_Array=[]
 pause(1)
 
-start_time = 0
-sample_time=.005
-tic
+
 while(1==1)
-    current_time=toc;
-    po=current_time- start_time;
-    if (( current_time - start_time)>sample_time)
+
         [recieve_variable1, recieve_variable2, recieve_variable3]=update_recive_variables(connection,recieve_tag,recieve_variable1,recieve_variable2,recieve_variable3);
          recieve_variable1_Array=[recieve_variable1_Array recieve_variable1 ];
          recieve_variable2_Array=[recieve_variable2_Array recieve_variable2 ];
          recieve_variable3_Array=[recieve_variable3_Array recieve_variable3 ];
-%         recieve_variable3
-         
-         
-         start_time = toc
-    end
+
 end
 
-encoder=recieve_variable1_Array
-pwm=recieve_variable2_Array
-TS=recieve_variable3_Array
-HZ1_data=[encoder ; pwm ; TS ]
