@@ -26,7 +26,6 @@ void loop()
       SEND_VAR1=RECIVE_VAR1;
       SEND_VAR2=RECIVE_VAR2;
       SEND_VAR3=RECIVE_VAR3;
-      
       send_send_variables();
 
 }

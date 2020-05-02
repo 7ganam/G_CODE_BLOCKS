@@ -4,17 +4,17 @@ new_reading="";
 if (connection.BytesAvailable > 0)
         new_reading=(fscanf(connection));
         erase(new_reading,newline);
-        in_tag=str2num(new_reading)
+        in_tag=str2num(new_reading);
         if (in_tag==recieve_tag)
             %-----------------------%
-             new_reading=(fscanf(connection))
-             recieve_variable1=str2num(new_reading)
+             new_reading=(fscanf(connection));
+             recieve_variable1=str2num(new_reading);
              %-----------------------%
              new_reading=(fscanf(connection));
-             recieve_variable2=str2num(new_reading)             
+             recieve_variable2=str2num(new_reading)  ;           
              %-----------------------%
              new_reading=(fscanf(connection));
-             recieve_variable3=str2num(new_reading)
+             recieve_variable3=str2num(new_reading);
              %-----------------------%
 
         end
