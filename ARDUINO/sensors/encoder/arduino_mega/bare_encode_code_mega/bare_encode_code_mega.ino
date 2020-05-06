@@ -53,7 +53,6 @@ void loop()
                 {
                   //check that we have both pins at detent (HIGH) and that we are expecting detent on this pin's rising edge
                   ENCODER_CLICKS --; //decrement the encoder's position count
-                  analogWrite(5 , ENCODER_CLICKS*2/360*255);
                   bFlag = 0; //reset flags for the next turn
                   aFlag = 0; //reset flags for the next turn
                 }
@@ -70,7 +69,6 @@ void loop()
                   if (a && b && bFlag)
                   { //check that we have both pins at detent (HIGH) and that we are expecting detent on this pin's rising edge
                     ENCODER_CLICKS ++; //increment the encoder's position count
-                    analogWrite(5 , ENCODER_CLICKS*2/360*255);
                     bFlag = 0; //reset flags for the next turn
                     aFlag = 0; //reset flags for the next turn
                   }

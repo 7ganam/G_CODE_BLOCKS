@@ -4,9 +4,9 @@
 //PID variables and Control SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS       
 #include <PID_v1.h>
 
-double  Kp =0.03750;
+double  Kp =0.025;
 double  Ki = 0.00;
-double  Kd = .0015;
+double  Kd = .0005;
 double  CONTROL_GOAL_SETPOINT =90;
 double  PID_SENSOR_INPUT, PID_OUTPUT_COMMAND; //Define Variables we'll be connecting to
 boolean set_pid = false;
@@ -61,7 +61,7 @@ void setup()
       myPID.SetOutputLimits(-1,1);
       myPID.SetMode(AUTOMATIC);
       myPID.SetMode(AUTOMATIC);
-      myPID.SetSampleTime(5);
+      myPID.SetSampleTime(50);
 
 
 }

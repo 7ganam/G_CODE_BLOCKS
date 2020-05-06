@@ -36,8 +36,7 @@ void setup()
 void loop()
 {
   // put your main code here, to run repeatedly:
-                      ANGLE = float(ENCODER_CLICKS) / 2000 * 360;
-                      Serial.println(ENCODER_CLICKS);
+                      Serial.println(ANGLE);
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -54,12 +53,13 @@ void loop()
                 {
                   //check that we have both pins at detent (HIGH) and that we are expecting detent on this pin's rising edge
                   ENCODER_CLICKS --; //decrement the encoder's position count
-                  analogWrite(5 , ENCODER_CLICKS*2/360*255);
                   bFlag = 0; //reset flags for the next turn
                   aFlag = 0; //reset flags for the next turn
                 }
                 else if (b==1 && a==0) bFlag = 1; //signal that we're expecting pinB to signal the transition to detent from free rotation
                 sei(); //restart interrupts
+                ANGLE = float(ENCODER_CLICKS) / 2000 * 360;
+
               }
               
         inline void PinB_ISR()
@@ -71,10 +71,12 @@ void loop()
                   if (a && b && bFlag)
                   { //check that we have both pins at detent (HIGH) and that we are expecting detent on this pin's rising edge
                     ENCODER_CLICKS ++; //increment the encoder's position count
-                    analogWrite(5 , ENCODER_CLICKS*2/360*255);
                     bFlag = 0; //reset flags for the next turn
                     aFlag = 0; //reset flags for the next turn
                   }
                   else if (a==1 && b==0) aFlag = 1; //signal that we're expecting pinA to signal the transition to detent from free rotation
                   sei(); //restart interrupts
+
+                  ANGLE = float(ENCODER_CLICKS) / 2000 * 360;
+
               }
