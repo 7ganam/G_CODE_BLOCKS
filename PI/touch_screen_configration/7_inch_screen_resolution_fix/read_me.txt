@@ -1,1 +1,0 @@
-replace the /boot/config.txt with this file
