@@ -1,0 +1,48 @@
+some basic concepts to remember:
+    -images are global to the machine ... so are containers .. they can be run from anywhere in the system
+    -you use ubuntu image to make a container for you project
+    -the container (where you install all your libs) should be linked with your projects dev directory containig your code.
+
+     
+
+
+
+1-make a directory for your project
+
+2-put your dev directory in the porject directory (or clone a git repo in it)
+
+3-build an Ubuntu image in your machine (this can be done by building the dockerfile provided or from docker hub )
+    -to build an image out of the dockerfile go to the directory containing the dockerfile and run:
+        #          docker build -t <image name> .
+        #     ex:  docker build -t bare_ubuntu_image  .
+        -note : the dockerfile containes only two lines 
+            FROM ubuntu
+            RUN apt-get update; 
+    -to download a ready image from docker hub:
+        #        docker pull <image_nam>:<tag>
+        #     ex:docker pull node:9.9.0
+        -note : here the tag is the version ... see docker hub for available tags
+        
+4-make a container out of the image that has access to the (project) directory 
+    -to make a container out of image go to the project directory and run:
+        #        docker container run -it --name <container name>      -p <portno_in_host:portno_in_container> -v "< work_dir_in_host : work_dir_in_container >  <image name>
+        #    ex: docker container run -it --name bare_ubuntu_container -p 3000:3000 -v "$(pwd)":/dock  bare_ubuntu_image
+             note: (this example  1-shares port 3000 between the machine and container  2-shares the project directory to a directory called /dock in the container )
+             note: if you want to map all ports use (--network host) instead of  (-p <portno_in_host:portno_in_container>)
+        #    ex: docker container run -it --name bare_ubuntu_container --network host -v "$(pwd)":/dock  bare_ubuntu_image
+    -the above command will create a new container and enter you in it in intereactive mode.
+
+5-To exit the container run the commnd "exit"
+6-To open the container again run :
+        #       docker start <container name> -i
+        #       docker start bare_ubuntu_container -i
+
+7-install any needed library inside the container .. when you finish your project create an image out of the container
+    - //TODO:
+
+8-for any new machine 
+    - download the git repo and place it inside an empty directory (this is now a project directory)
+    - go to step 3
+
+
+
