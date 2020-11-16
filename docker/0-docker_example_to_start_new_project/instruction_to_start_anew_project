@@ -11,7 +11,7 @@ some basic concepts to remember:
 
 2-put your dev directory in the porject directory (or clone a git repo in it)
 
-3-build an Ubuntu image in your machine (this can be done by building the dockerfile provided or from docker hub )
+3-build an Ubuntu image in your machine if you don't have one already (this can be done by building the dockerfile provided or from docker hub )
     -to build an image out of the dockerfile go to the directory containing the dockerfile and run:
         #          docker build -t <image name> .
         #     ex:  docker build -t bare_ubuntu_image  .
