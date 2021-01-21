@@ -1,0 +1,93 @@
+{
+  "name": "udacimak",
+  "version": "1.6.6",
+  "description": "Udacity Nanodegree/course downloader and renderer",
+  "main": "index.js",
+  "scripts": {
+    "coverage": "jest --coverage src",
+    "lint": "eslint ./src",
+    "prebuild": "rimraf lib && npm run lint",
+    "build": "babel src --out-dir lib --copy-files",
+    "watch": "nodemon --watch src --exec \"rimraf lib && babel src --out-dir lib --copy-files\"",
+    "test": "echo \"No tests\" ",
+    "release": "np",
+    "version": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/udacimak/udacimak.git"
+  },
+  "keywords": [
+    "udacity",
+    "udacimak",
+    "udacious",
+    "downloader",
+    "nanodegree",
+    "udacity nanodegree",
+    "udacity downloader",
+    "udacity nanodegree downloader",
+    "udacity course downloader",
+    "udacity download nanodegree",
+    "udacity download course",
+    "udacity download videos",
+    "udacity download content",
+    "udacity content downloader"
+  ],
+  "author": "udacimak <udacimak@tutanota.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/udacimak/udacimak/issues"
+  },
+  "homepage": "https://github.com/udacimak/udacimak#readme",
+  "preferGlobal": true,
+  "bin": {
+    "udacimak": "./lib/index.js"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-transform-async-to-generator": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "faker": "^4.1.0",
+    "jest": "^23.6.0",
+    "mock-fs": "^4.7.0",
+    "nock": "^10.0.2",
+    "nodemon": "^1.18.7",
+    "np": "^3.0.4",
+    "regenerator-runtime": "^0.12.1"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "cli-progress": "^2.1.0",
+    "commander": "^2.18.0",
+    "compare-versions": "^3.4.0",
+    "copy-dir": "^0.4.0",
+    "directory-tree": "^2.1.0",
+    "filenamify": "^2.1.0",
+    "fs-extra": "^9.0.0",
+    "handlebars": "^4.1.2",
+    "inquirer": "^6.2.0",
+    "npm": "^6.9.0",
+    "ora": "^3.0.0",
+    "pkginfo": "^0.4.1",
+    "progress-stream": "^2.0.0",
+    "request": "^2.88.0",
+    "request-progress": "^3.0.0",
+    "rimraf": "^2.6.2",
+    "serialize-error": "^3.0.0",
+    "showdown": "^1.8.6",
+    "user-settings": "^0.2.0",
+    "valid-url": "^1.0.9",
+    "winston": "^3.1.0",
+    "youtube-dl": "^3.0.2"
+  }
+}

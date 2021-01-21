@@ -1,0 +1,22 @@
+{
+  "restartable": "rs",
+  "ignore": [
+    ".git",
+    "lib",
+    "img/",
+    "node_modules/",
+    "src/**/*.test.js",
+    "**/*.log"
+  ],
+  "verbose": true,
+  "execMap": {
+    "css": "rimraf lib && babel src --out-dir lib --copy-files",
+    "html": "rimraf lib && babel src --out-dir lib --copy-files",
+    "js": "rimraf lib && babel src --out-dir lib --copy-files"
+  },
+  "watch": ["src"],
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "ext": "css,js,json,html"
+}

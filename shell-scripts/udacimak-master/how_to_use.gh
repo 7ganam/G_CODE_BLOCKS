@@ -1,0 +1,13 @@
+since I keep facing problems installing the command line tool with npm .. i went with docker as a run environment for the command:
+note: i changed the default dockerfile to make the contrainer able to run interactivly instead of running the udacimak command and exit
+here is the steps to run on a fresh machin:
+    1-build the docke image from the docker file:
+        docker build  <image_name>  .
+    2-run a container out of this image and share a folder with it:
+        sudo docker run -it -v "$(pwd)/course":/course <image_name>     //this will start a new container interactivly ... you will find a course directory in root directory
+    3-while in interactive mode ... cd inside the course directory and run the download command:
+        sudo udacimak download <course_code>    //supply the auth tokken found in cookies _jwt entry ... this will download course metadata only
+    4-cd into the downloaded file and create a directory "downloaded" then run the render comand:
+        udacimak render . --targetdir downloaded  // this will download the course data in the downloaded folder and make an index.html file
+
+

@@ -1,0 +1,18 @@
+Dockerfile
+src
+
+#tests
+test
+coverage
+
+#linters
+.jscsrc
+.jshintrc
+.eslintrc*
+
+#babel
+.babelrc
+
+#editor settings
+.idea
+.editorconfig
