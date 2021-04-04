@@ -21,7 +21,7 @@ def get_file_list(root_dir_path):
     for (dirpath, _dirnames, filenames) in walk(root_dir_path):
         for file in filenames:
             extension = path.splitext(file)[1]
-            if extension in ['.mp4', '.mp3', '.mkv', '.aac']:
+            if extension in ['.mp4', '.mp3', '.mkv', '.aac','.avi' , '.mov']:
                 media_files.append(path.join(dirpath, file))
     return media_files
 
