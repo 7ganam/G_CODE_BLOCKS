@@ -39,9 +39,9 @@ def parse_arguments():
         sort_by_files defaults to False"""
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "-p", "--play-list", default='playlist.m3u', help="playlist name")
+        "-p", "--play-list", default='000_playlist.m3u', help="playlist name")
     parser.add_argument(
-        "-d", "--directory", required=True, help="root directory")
+        "-d", "--directory", required=True, default=' .', help="root directory")
     parser.add_argument(
         '--sort-by-files',
         dest='sort_by_files',
