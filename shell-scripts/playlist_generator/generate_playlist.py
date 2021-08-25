@@ -15,6 +15,16 @@ from os import walk
 from os import path
 from natsort import natsorted
 
+import subprocess
+
+def get_length(filename):
+    result = subprocess.run(["ffprobe", "-v", "error", "-show_entries",
+                             "format=duration", "-of",
+                             "default=noprint_wrappers=1:nokey=1", filename],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT)
+    return float(result.stdout)
+
 
 def get_file_list(root_dir_path):
     media_files = []
@@ -23,6 +33,7 @@ def get_file_list(root_dir_path):
             extension = path.splitext(file)[1]
             if extension in ['.mp4', '.mp3', '.mkv', '.aac','.avi' , '.mov']:
                 media_files.append(path.join(dirpath, file))
+                # print(root_dir_path+'/'+ file)
     return media_files
 
 
@@ -30,6 +41,15 @@ def create_playlist(playlist_path, files):
     with open(playlist_path, 'w', encoding='utf-8') as p:
         for f in files:
             print(f, file=p)
+
+def generate_durations(playlist_path, files):
+    print(*files, sep='\n')
+    with open('./durtaoitons', 'w', encoding='utf-8') as p:
+        for file in files:
+            duration = round(get_length(file) / 60, 1) 
+            print(f'{file}\t{duration}', file=p)
+
+
 
 
 def parse_arguments():
@@ -39,7 +59,7 @@ def parse_arguments():
         sort_by_files defaults to False"""
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "-p", "--play-list", default='000_playlist.m3u', help="playlist name")
+        "-p", "--play-list", default='000-playlist.m3u', help="playlist name")
     parser.add_argument(
         "-d", "--directory", required=True, default=' .', help="root directory")
     parser.add_argument(
@@ -65,9 +85,12 @@ def main():
     else:
         file_list = natsorted(file_list)
     relative_paths = [path.relpath(p, args.directory) for p in file_list]
-    print(*relative_paths, sep='\n')
+    # print(*relative_paths, sep='\n')
     create_playlist(path.join(args.directory, args.play_list), relative_paths)
+    generate_durations(path.join(args.directory, args.play_list),file_list)
+
 
 
 if __name__ == '__main__':
     main()
+# 
