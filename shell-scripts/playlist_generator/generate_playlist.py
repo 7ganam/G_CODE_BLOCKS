@@ -21,8 +21,9 @@ def get_length(filename):
     result = subprocess.run(["ffprobe", "-v", "error", "-show_entries",
                              "format=duration", "-of",
                              "default=noprint_wrappers=1:nokey=1", filename],
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT)
+    stdout=subprocess.PIPE,
+    stderr=subprocess.STDOUT)
+    print(result.stdout)
     return float(result.stdout)
 
 
@@ -44,9 +45,12 @@ def create_playlist(playlist_path, files):
 
 def generate_durations(playlist_path, files):
     print(*files, sep='\n')
-    with open('./durtaoitons', 'w', encoding='utf-8') as p:
+    with open('./000-durations.txt', 'w', encoding='utf-8') as p:
         for file in files:
-            duration = round(get_length(file) / 60, 1) 
+            try:
+                duration = round(get_length(file) / 60, 2) 
+            except:
+                duration = 0
             print(f'{file}\t{duration}', file=p)
 
 
